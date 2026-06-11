@@ -1,0 +1,43 @@
+/* ==========================================================================
+   INDEX.CSS - RESETEO SEGURO Y LIMPIO
+   (Elimina los estilos por defecto de Vite que rompen el diseño)
+   ========================================================================== */
+
+/* 1. Importación de Tipografías desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap');
+
+/* 2. Reseteo Universal: Evita márgenes invisibles y descuadres */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 3. Configuración estricta de contenedores principales */
+html, body, #root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #FFFDF9; /* Fondo crema de Dulce Encanto */
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  color: #4a4a4a;
+  line-height: 1.6;
+  overflow-x: hidden; /* Evita que la pantalla se mueva hacia los lados en celulares */
+  scroll-behavior: smooth; /* Hace que el deslizamiento a las secciones sea suave */
+}
+
+/* 4. Escudo protector para Imágenes (Evita logos gigantes) */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 5. Estilos básicos para enlaces */
+a {
+  text-decoration: none;
+  color: inherit;
+}
