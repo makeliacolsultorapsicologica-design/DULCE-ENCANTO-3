@@ -199,6 +199,7 @@ a {
   letter-spacing: 8px;
   padding: 25px 0;
   opacity: 0.75;
+  display: block;
 }
 
 .ornament-divider {
@@ -301,6 +302,7 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 0 15px;
 }
 
 .logo-link {
