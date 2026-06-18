@@ -124,7 +124,7 @@ const Hero = () => (
 
 const About = () => (
   <section id="nosotros" className="about-section">
-    <div className="ornament-top">✿ ✧ ✿ ✧ ✿ ✧ ✿ ✧ ✿</div>
+    <div className="ornament-top">✿ ✧ ✿ ✧ ✿ ✧ ✿ ✧ ✿ ✧ ✿ ✧ ✿</div>
     <div className="container about-grid">
       <div className="about-image-wrapper">
         <div className="about-bg-shape mint-shape"></div>
