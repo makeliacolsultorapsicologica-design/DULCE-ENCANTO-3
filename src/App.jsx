@@ -109,7 +109,7 @@ const Hero = () => (
       <div className="hero-card">
         <span className="hero-pretitle">✿ Catering, Alquiler y Decoración Integral ✿</span>
         <h1 className="hero-title">Hacemos de tu Evento un Momento Único e Inolvidable</h1>
-        <div className="hero-divider">🎔</div>
+        <div className="hero-divider">✿</div>
         <p className="hero-text">
           Llevamos tu celebración al siguiente nivel. Te ofrecemos la más fina repostería artesanal junto con el servicio de alquiler de mobiliario, menaje, toldos y decoración temática exclusiva.
         </p>
@@ -124,7 +124,7 @@ const Hero = () => (
 
 const About = () => (
   <section id="nosotros" className="about-section">
-    <div className="ornament-top">🎔 ✧ 🎔</div>
+    <div className="ornament-top">✿ ✧ ✿ ✧ ✿ ✧ ✿ ✧ ✿</div>
     <div className="container about-grid">
       <div className="about-image-wrapper">
         <div className="about-bg-shape mint-shape"></div>
@@ -140,15 +140,15 @@ const About = () => (
         <h2 className="section-title">El Arte de Celebrar en Grande</h2>
         <div className="title-underline"></div>
         <p className="highlight-text">
-                  </p>
+        </p>
         <p className="standard-text">
           Nuestra filosofía se basa en el compromiso absoluto y la perfección del detalle. No solo te ofrecemos bocaditos deliciosos que deleitan paladares, sino que vestimos y acondicionamos tu locación completa con toldos, menaje pulcro y mobiliario sofisticado, quitándote cualquier preocupación logística.
         </p>
         <ul className="features-list">
-          <li><span className="check-icon">🎔</span> Insumos Gastronómicos Seleccionados</li>
-          <li><span className="check-icon">🎔</span> Mobiliario e Infraestructura Impecable</li>
-          <li><span className="check-icon">🎔</span> Decoración Temática Vanguardista y Diseños Exclusivos</li>
-          <li><span className="check-icon">🎔</span> Montaje Corporativo y Social con Puntualidad Rigurosa</li>
+          <li><span className="check-icon">✿</span> Insumos Gastronómicos Seleccionados</li>
+          <li><span className="check-icon">✿</span> Mobiliario e Infraestructura Impecable</li>
+          <li><span className="check-icon">✿</span> Decoración Temática Vanguardista y Diseños Exclusivos</li>
+          <li><span className="check-icon">✿</span> Montaje Corporativo y Social con Puntualidad Rigurosa</li>
         </ul>
       </div>
     </div>
@@ -277,7 +277,7 @@ const Services = () => {
 
 const EventsType = () => (
   <section id="eventos" className="events-type-section">
-    <div className="ornament-divider">🎔 ✦ 🎔 ✦ 🎔</div>
+    <div className="ornament-divider">✿ ✧ ✿ ✧ ✿ ✧ ✿ ✧ ✿</div>
     <div className="container">
       <div className="section-header text-center">
         <span className="section-label">✧ Atmósferas Personalizadas ✧</span>
