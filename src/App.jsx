@@ -345,7 +345,7 @@ const Footer = () => (
         <div className="footer-logo-container-giant">
           <img src={logoImg} alt="Dulce Encanto" className="footer-logo-max" />
         </div>
-        <p className="footer-tagline">🎔 Pequeños bocados, grandes momentos 🎔</p>
+        <p className="footer-tagline">✿ Pequeños bocados, grandes momentos ✿</p>
         <p className="footer-text">
           Dedicados al diseño, catering gourmet y equipamiento logístico premium para toda clase de eventos sociales en Lima Metropolitana.
         </p>
