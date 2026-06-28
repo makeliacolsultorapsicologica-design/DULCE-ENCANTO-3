@@ -20,15 +20,15 @@ const listadoBocaditos = [
   { id: 2, titulo: "Trufas de Chocolate", imagen: trufaImg, badge: "Premium", descripcion: "Exquisitas esferas de puro chocolate premium seleccionadas rigurosamente, con una textura sedosa que se funde en el paladar." },
   { id: 3, titulo: "Mini Pie de Limón", imagen: limonImg, badge: "Cítrico", descripcion: "El equilibrio perfecto sobre una base crocante horneada, rellena de una crema cítrica vibrante y coronada con merengue." },
   { id: 4, titulo: "Mini Pie de Manzana", imagen: manzanaImg, badge: "Clásico", descripcion: "Deliciosas manzanas frescas finamente picadas y caramelizadas con un toque de canela secreta, reposadas en una delicada masa." },
-  { id: 5, titulo: "Empanaditas de Carne", imagen: carneImg, badge: "Clásico", descripcion: "Masa hojaldrada artesanal rellena de tierno lomo fino sazonado, con un dorado perfecto y sabor casero que encanta en cada bocado."},
-  { id: 6, titulo: "Tequeños con Guacamole", imagen: tequenosImg, badge: "Clásico", descripcion: "Crujientes tequeños de queso acompañados de cremosa salsa guacamole preparada con palta fresca y finos ingredientes seleccionados."}
+  { id: 5, titulo: "Empanaditas de Carne", imagen: carneImg, badge: "Clásico", descripcion: "Masa hojaldrada artesanal rellena de tierno lomo fino sazonado, con un dorado perfecto y sabor casero que encanta en cada bocado." },
+  { id: 6, titulo: "Tequeños con Guacamole", imagen: tequenosImg, badge: "Clásico", descripcion: "Crujientes tequeños de queso acompañados de cremosa salsa guacamole preparada con palta fresca y finos ingredientes seleccionados." }
 ];
 
 const catalogoExtendidoBocaditos = [
   { id: 7, titulo: "Brownies Bites", categoria: "Dulce", desc: "Cuadraditos de chocolate melcochoso con nueces crujientes." },
   { id: 8, titulo: "Mini Cupcakes Temáticos", categoria: "Dulce", desc: "Suave masa de vainilla o chocolate con frosting personalizado." },
   { id: 9, titulo: "Macarons Franceses", categoria: "Dulce", desc: "Finas galletas de almendra rellenas de ganache de frutos de la estación." },
-   { id: 10, titulo: "Mini Quiche Lorraine", categoria: "Salado", desc: "Tartaleta salada de crema, queso suizo y tocino ahumado crocante." }
+  { id: 10, titulo: "Mini Quiche Lorraine", categoria: "Salado", desc: "Tartaleta salada de crema, queso suizo y tocino ahumado crocante." }
 ];
 
 // Mapeo directo a la carpeta public/servicios/
@@ -83,8 +83,9 @@ const Navbar = () => {
           <a href="#inicio" onClick={() => setIsMobileMenuOpen(false)}>Inicio</a>
           <a href="#nosotros" onClick={() => setIsMobileMenuOpen(false)}>Nosotros</a>
           <a href="#bocaditos" onClick={() => setIsMobileMenuOpen(false)}>Bocaditos</a>
-          <a href="#servicios" onClick={() => setIsMobileMenuOpen(false)}>Estructuras y Alquiler</a>
+          <a href="#servicios" onClick={() => setIsMobileMenuOpen(false)}>Alquiler</a>
           <a href="#eventos" onClick={() => setIsMobileMenuOpen(false)}>Eventos</a>
+          <a href="#catalogos" onClick={() => setIsMobileMenuOpen(false)}>Catálogos</a> 
           <a href="#contacto" onClick={() => setIsMobileMenuOpen(false)}>Contacto</a>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-nav-mobile">Cotizar Ahora</a>
         </nav>
@@ -138,9 +139,7 @@ const About = () => (
       <div className="about-text">
         <span className="section-label">✧ Nuestra Experiencia y Calidad ✧</span>
         <h2 className="section-title">El Arte de Celebrar en Grande</h2>
-        <div className="title-underline"></div>
-        <p className="highlight-text">
-        </p>
+        <div className="title-underline</div>"></div>
         <p className="standard-text">
           Nuestra filosofía se basa en el compromiso absoluto y la perfección del detalle. No solo te ofrecemos bocaditos deliciosos que deleitan paladares, sino que vestimos y acondicionamos tu locación completa con toldos, menaje pulcro y mobiliario sofisticado, quitándote cualquier preocupación logística.
         </p>
@@ -228,7 +227,6 @@ const Services = () => {
 
   return (
     <section id="servicios" className="services-section">
-      {/* Sintonía con la estética del Hero */}
       <div className="services-hero-mirror-bg" style={{ backgroundImage: `url(${heroImg})` }}></div>
       <div className="services-hero-mirror-overlay"></div>
       
@@ -303,6 +301,147 @@ const EventsType = () => (
   </section>
 );
 
+/* =========================================================================
+   SECCIÓN: CATÁLOGOS MODIFICADA (Mapeo directo a carpetas públicas)
+   ========================================================================= */
+const Catalogs = () => {
+  const [activeTab, setActiveTab] = useState('decoraciones');
+  const [isAdminMode, setIsAdminMode] = useState(false);
+  
+  // Estado inicializado mapeando automáticamente las imágenes a la carpeta public
+  const [imagenes, setImagenes] = useState({
+    // Genera automáticamente un array de 20 objetos para Decoraciones
+    decoraciones: Array.from({ length: 20 }, (_, i) => ({
+      id: `dec-${i + 1}`,
+      url: `/catalogos/decoraciones/decoracion${i + 1}.jpg`,
+      nombre: `Decoración ${i + 1}`
+    })),
+    // Genera automáticamente un array de 15 objetos para Toldos
+    toldos: Array.from({ length: 15 }, (_, i) => ({
+      id: `tol-${i + 1}`,
+      url: `/catalogos/toldos/toldo${i + 1}.jpg`,
+      nombre: `Toldo ${i + 1}`
+    }))
+  });
+
+  const handleSubirImagenes = (event) => {
+    const files = Array.from(event.target.files);
+    if (files.length === 0) return;
+
+    // Crea URLs locales temporales para previsualizar si subes fotos de forma interactiva
+    const nuevasImagenes = files.map(file => ({
+      id: Date.now() + Math.random(),
+      url: URL.createObjectURL(file),
+      nombre: file.name
+    }));
+
+    setImagenes(prev => ({
+      ...prev,
+      [activeTab]: [...prev[activeTab], ...nuevasImagenes]
+    }));
+  };
+
+  return (
+    <section id="catalogos" className="catalogs-section" style={{ padding: '80px 0', backgroundColor: '#fcfaf8' }}>
+      <div className="container">
+        <div className="section-header text-center">
+          <span className="section-label">✿ Portafolio Exclusivo ✿</span>
+          <h2 
+            className="section-title text-prominent" 
+            onDoubleClick={() => setIsAdminMode(!isAdminMode)}
+            style={{ cursor: 'default' }}
+            title="Doble clic para modo edición"
+          >
+            Catálogo de Diseños
+          </h2>
+          <div className="title-underline center"></div>
+        </div>
+
+        <div className="tab-switcher" style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '2rem 0' }}>
+          <button 
+            onClick={() => setActiveTab('decoraciones')}
+            style={{ 
+              padding: '10px 30px', 
+              borderRadius: '50px', 
+              cursor: 'pointer', 
+              border: '1px solid #cba258', 
+              background: activeTab === 'decoraciones' ? '#cba258' : 'transparent', 
+              color: activeTab === 'decoraciones' ? 'white' : '#3a3132',
+              fontWeight: 'bold',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            Decoraciones
+          </button>
+          <button 
+            onClick={() => setActiveTab('toldos')}
+            style={{ 
+              padding: '10px 30px', 
+              borderRadius: '50px', 
+              cursor: 'pointer', 
+              border: '1px solid #cba258', 
+              background: activeTab === 'toldos' ? '#cba258' : 'transparent', 
+              color: activeTab === 'toldos' ? 'white' : '#3a3132',
+              fontWeight: 'bold',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            Toldos
+          </button>
+        </div>
+
+        {/* EL BOTÓN SOLO SE RENDERIZA SI HICISTE DOBLE CLIC EN EL TÍTULO */}
+        {isAdminMode && (
+          <div className="upload-container" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <label className="btn-primary" style={{ cursor: 'pointer', display: 'inline-block' }}>
+              + Subir fotos temporales a {activeTab === 'decoraciones' ? 'Decoraciones' : 'Toldos'}
+              <input 
+                type="file" 
+                accept="image/*" 
+                multiple 
+                onChange={handleSubirImagenes} 
+                style={{ display: 'none' }} 
+              />
+            </label>
+            <p style={{ fontSize: '0.8rem', color: '#cba258', marginTop: '10px' }}>
+              Modo Administrador Activado. Las imágenes que subas aquí son temporales del navegador. Para agregarlas permanentemente, guárdalas en la carpeta "public/catalogos/{activeTab}/" de tu proyecto.
+            </p>
+          </div>
+        )}
+
+        <div className="catalogs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
+          {imagenes[activeTab].length === 0 ? (
+            <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#7a6f70', fontStyle: 'italic', padding: '3rem 0' }}>
+              Aún no hay fotos cargadas en {activeTab}.
+            </p>
+          ) : (
+            imagenes[activeTab].map((img) => (
+              <div key={img.id} style={{ borderRadius: '15px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', height: '300px', backgroundColor: '#fdf2f3' }}>
+                <img 
+                  src={img.url} 
+                  alt={img.nombre} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} 
+                  onError={(e) => {
+                    // Muestra una caja gris elegante si la imagen física aún no se encuentra en public/
+                    e.target.style.display = 'none';
+                    e.target.parentNode.style.display = 'flex';
+                    e.target.parentNode.style.alignItems = 'center';
+                    e.target.parentNode.style.justifyContent = 'center';
+                    e.target.parentNode.style.color = '#cba258';
+                    e.target.parentNode.style.fontSize = '0.9rem';
+                    e.target.parentNode.style.padding = '20px';
+                    e.target.parentNode.innerText = `Falta archivo: /public/catalogos/${activeTab}/${img.nombre.toLowerCase().replace(" ", "")}.jpg`;
+                  }}
+                />
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Contact = () => (
   <section className="contact-section" id="contacto">
     <div className="container">
@@ -357,6 +496,7 @@ const Footer = () => (
           <li><a href="#nosotros">Sobre Nosotros</a></li>
           <li><a href="#bocaditos">Bocaditos</a></li>
           <li><a href="#servicios">Alquiler y Toldos</a></li>
+          <li><a href="#catalogos">Catálogos</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
@@ -384,6 +524,7 @@ export default function App() {
       <Products />
       <Services />
       <EventsType />
+      <Catalogs /> 
       <Contact />
       <Footer />
     </div>

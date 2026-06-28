@@ -1448,4 +1448,84 @@ a {
   .contact-card {
     padding: 45px 24px;
   }
+  /* ==========================================================================
+   SISTEMA DE SUBIDA DE IMÁGENES - CATÁLOGOS
+   ========================================================================== */
+
+/* Pestañas (asegúrate de no duplicarlo si ya lo pusiste antes) */
+.tab-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 2rem 0;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--gold-primary, #cba258);
+  padding: 10px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--text-dark, #3a3132);
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: var(--gold-primary, #cba258);
+  color: white;
+}
+
+/* Contenedor y Botón de Subida */
+.upload-container {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.btn-upload-luxury {
+  display: inline-block;
+  background-color: var(--gold-primary, #cba258);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(203, 162, 88, 0.3);
+}
+
+.btn-upload-luxury:hover {
+  background-color: #b58d45; /* Un dorado más oscuro */
+  transform: translateY(-2px);
+}
+
+/* Mensaje cuando está vacío */
+.empty-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #7a6f70;
+  font-style: italic;
+  padding: 3rem 0;
+  font-size: 1.1rem;
+}
+
+/* Ajuste de las imágenes subidas para que no se deformen */
+.uploaded-img-wrapper {
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #fdf2f3;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Esto recorta la imagen elegantemente para que llene el espacio */
+  transition: transform 0.5s ease;
+}
+
+/* Efecto de zoom elegante al pasar el mouse por la foto */
+.catalog-card-luxury:hover .uploaded-image {
+  transform: scale(1.05);
+}
 }
